@@ -94,7 +94,7 @@ a {
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-<script src="//cdn.rawgit.com/gka/d3-jetpack/master/d3-jetpack.js" charset="utf-8"></script>
+<script src="d3-jetpack.js" charset="utf-8"></script>
 
 <!-- Bundled version -->
 <!-- <script src="swoopyArrows.js" charset="utf-8"></script> -->
@@ -114,20 +114,20 @@ a {
 
 var swoopy = swoopyArrow()
   .angle(Math.PI/4)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d=>d[0])
+  .y(d=>d[1]);
 
 var loopy = loopyArrow()
   .steps(44)
   .radius(25)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d=>d[0])
+  .y(d=>d[1]);
 
 var kooky = kookyArrow()
   .steps(5)
   .deviation(100)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d=>d[0])
+  .y(d=>d[1]);
 
 // Set up container
 var svg = d3.select("body").append("svg")
