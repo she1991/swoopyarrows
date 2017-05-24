@@ -2,7 +2,7 @@ function loopyArrow() {
 
   var steps = 30,
       radius = 20,
-      interpolate = 'basis',
+      interpolate = d3.curveBasis,
       xValue = function(d) { return d[0]; },
       yValue = function(d) { return d[1]; };
 
@@ -14,7 +14,7 @@ function loopyArrow() {
       return [xValue.call(data, d, i), yValue.call(data, d, i)];
     });
 
-    var line = d3.svg.line().interpolate(interpolate);
+    var line = d3.line().curve(interpolate);
 
     var points = [];
 
