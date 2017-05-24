@@ -3,7 +3,7 @@ function kookyArrow() {
   var steps = 5,
       mean = 0,
       deviation = 100,
-      interpolate = 'basis',
+      interpolate = d3.curveBasis,
       xValue = function(d) { return d[0]; },
       yValue = function(d) { return d[1]; };
 
@@ -15,8 +15,8 @@ function kookyArrow() {
       return [xValue.call(data, d, i), yValue.call(data, d, i)];
     });
 
-    var rng = d3.random.normal(mean, deviation);
-    var line = d3.svg.line().interpolate(interpolate);
+    var rng = d3.randomNormal(mean, deviation);
+    var line = d3.line().curve(interpolate);
 
     var points = [];
 
