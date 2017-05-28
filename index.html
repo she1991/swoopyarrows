@@ -87,6 +87,9 @@ a {
     <div class="ex jagged">jagged
       <svg></svg>
     </div>
+    <div class="ex angular">angular
+      <svg></svg>
+    </div>
   </div>
 
   <iframe src="https://ghbtns.com/github-btn.html?user=bizweekgraphics&repo=swoopyarrows&type=star&count=false&size=large" frameborder="0" scrolling="0" width="70px" height="30px"></iframe>
@@ -107,6 +110,7 @@ a {
 <script src="loopyArrow.js" charset="utf-8"></script>
 <script src="kookyArrow.js" charset="utf-8"></script>
 <script src="jaggedArrow.js" charset="utf-8"></script>
+<script src="angularConnector.js" charset="utf-8"></script>
 
 <script>
 
@@ -138,6 +142,11 @@ var jagged = jaggedArrow()
   .deviation(100)
   .x(d=>d[0])
   .y(d=>d[1]);
+
+var angular = d3.line()
+      .x(d=>d[0])
+      .y(d=>d[1])
+      .curve(angularConnector);
 
 // Set up container
 var svg = d3.select("body").append("svg")
@@ -187,6 +196,11 @@ d3.select('.jagged svg').append("path.arrow")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", jagged);
+
+d3.select('.angular svg').append("path.arrow")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[30,150],[150,200]])
+  .attr("d", angular);
 
 // to demonstrate randomness, redraw the kooky arrow every second
 setInterval(function() {
